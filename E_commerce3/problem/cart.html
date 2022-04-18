@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/e3ddd9c631.js" crossorigin="anonymous"></script>
+    <style>
+          body{
+        display: flex;
+        flex-wrap: wrap;
+        
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 18px;
+            width: 95%;
+        }
+        #container>div{
+            /* border: 1px solid rgb(250, 237, 237); */
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            /* width: 90%; */
+        }
+        #flex{
+            display: flex;
+            justify-content: space-between;
+            background-color: dimgray;
+        }
+        #flex>p:nth-child(2){
+            text-decoration: line-through;
+        }
+        #h1{
+            background-color: rgb(169, 236, 105);
+            width: 100%;
+            text-align: center;
+           padding: 1%;
+           font-size: large;
+          
+        }
+        #btn{
+            width: 100%;
+            height: 20px;
+           background-color: rgb(255, 123, 47);
+        }
+        #name{
+            font-size: 80%;
+            font-family: sans-serif;
+            font-weight: 500;
+            color: grey;
+        }
+        #proceed{
+            width: 10%;
+            background-color: #ff4800;
+            margin-left: 90%;
+        }
+        #proceedin{
+            width: 10%;
+            background-color: #fff8f6;
+            margin-left: 90%;
+            margin-top: 1%;
+        }
+        i{
+            font-size: 30px;
+           
+
+        }
+        #count{
+            font-size: 30px;
+            border: 2px solid black;
+            border-radius: 50px;
+            background-color:white;
+           
+        }
+        #cart
+        {
+        margin-left: 90%;
+        width: 10%;
+        background-color: rgb(200, 220, 223)
+        }
+    </style>
+</head>
+<body>
+
+    <div id="h1">Cart items</div>
+ <div id="cart"><span><i class="fas fa-cart-plus"></i></span>
+   <span id="count"></span></div>
+   <input id="proceedin" type="text" placeholder="enter masai30"> 
+    <button id="proceed" onclick="discount()">Apply Promo</button>
+    <button id="proceed" onclick="checkout()">check out</button>
+    <button id="proceed" onclick="pay()">Pay Now</button>
+
+    <h1></h1>
+    <div id="container"></div>
+
+    
+    <img  style="height:480px";>
+    <h2></h2>
+    
+  
+</body>
+</html>
+<script>
+    var cartarr=JSON.parse(localStorage.getItem("cartitem")) ||[];
+
+    createTable(cartarr);
+
+     function createTable(cartarr) {
+     document.querySelector("h1").textContent=`Total Cart Amount is ₹ ${0}`;
+     document.querySelector("#count").textContent=0;
+     document.querySelector("#container").innerHTML = "";
+     cartarr.map(function(data,index){
+        var div= document.createElement("div");
+        var image=document.createElement("img");
+        image.setAttribute("src",data.image_url);
+
+        var name=document.createElement("p");
+        name.textContent=data.name;
+        name.setAttribute("id","name");
+        var div1=document.createElement("div");
+        div1.setAttribute("id","flex");
+
+        var p1=document.createElement("p");
+        p1.textContent=data.price;
+
+        var p2=document.createElement("p");
+        p2.textContent=data.strikedoffprice;
+        div1.append(p1,p2);
+
+        var btn=document.createElement("button");
+        btn.textContent="Delete";
+        btn.setAttribute("id","btn");
+        btn.addEventListener("click",function(){
+            deletetask(index)
+        });
+
+        div.append(image,name,div1,btn);
+
+        document.querySelector("#container").append(div);
+    });
+    var count=0;
+    var total=cartarr.reduce(function(acc,cv){
+        count++;
+        document.querySelector("#count").textContent=count;
+       return Number(acc)+ Number(cv.price);
+    },0);
+
+    if(total==0)
+    {  
+        document.querySelector("img").setAttribute("src","https://www.rd.com/wp-content/uploads/2020/06/GettyImages-154734079-1024x683.jpg")
+        document.querySelector("h2").textContent="Your bag is empty............ "
+    
+    }
+
+    document.querySelector("h1").textContent=`Total Cart Amount is ₹ ${total}`;
+
+}
+
+      // *****************
+  function  deletetask(index){
+   cartarr.splice(index,1)
+   localStorage.setItem("cartitem", JSON.stringify(cartarr));
+   createTable(cartarr);
+  
+ }
+
+ function discount()
+ {
+  var promo=document.querySelector("#proceedin").value;
+  if(promo=="masai30")
+  {
+    var total=cartarr.reduce(function(acc,cv){
+    return Number(acc)*.7+ Number(cv.price)*.7;
+    },0);
+    document.querySelector("h1").textContent=`Total Cart Amount is ₹ ${total}`;
+    alert("you have got 30% discount")
+  }
+ 
+ }
+ function checkout(){
+     alert("Thank You for Purchasing")
+     window.location.href="success.html"
+ }
+ function pay(){
+     
+     window.location.href="payment.html"
+ }
+
+</script>

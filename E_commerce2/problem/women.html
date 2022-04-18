@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            body{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 18px;
+            width: 85%;
+        }
+        #container>div{
+          
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+        }
+        #flex{
+            display: flex;
+            justify-content: space-between;
+            background-color: dimgray;
+        }
+        #flex>p:nth-child(2){
+            text-decoration: line-through;
+        }
+        #h1{
+            background-color: rgb(169, 236, 105);
+            width: 100%;
+            text-align: center;
+           padding: 1%;
+           font-size: large;
+          
+        }
+        #btn{
+            width: 100%;
+            height: 20px;
+           background-color: greenyellow;
+        }
+        #name{
+            font-size: 80%;
+            font-family: sans-serif;
+            font-weight: 580;
+        }
+        #cart
+        {
+          width: 20%;
+          margin-bottom: 2%;
+          height: 30px;
+         background-color: red;
+         margin-left: 80%;
+        
+
+        }
+    </style>
+</head>
+<body>
+    <div id="h1">Women Page</div> 
+    <button id="cart">Go to cart</button>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    womensdata=JSON.parse(localStorage.getItem("womensData"));
+    var cartArr=JSON.parse(localStorage.getItem("cartitem")) || [];
+   
+    womensdata.map(function(data){
+        var div= document.createElement("div");
+        var image=document.createElement("img");
+        image.setAttribute("src",data.image_url);
+
+        var name=document.createElement("p");
+        name.textContent=data.name;
+        name.setAttribute("id","name");
+
+        var div1=document.createElement("div");
+        div1.setAttribute("id","flex");
+
+        var p1=document.createElement("p");
+        p1.textContent=data.price;
+
+        var p2=document.createElement("p");
+        p2.textContent=data.strikedoffprice;
+        div1.append(p1,p2);
+
+        var btn=document.createElement("button");
+        btn.textContent="Add to cart";
+        btn.setAttribute("id","btn");
+        btn.addEventListener("click",function(){
+            addtocart(data)
+        });
+
+        div.append(image,name,div1,btn);
+
+        document.querySelector("#container").append(div);
+    });
+
+    function addtocart(data){
+        cartArr.push(data);
+        localStorage.setItem("cartitem",JSON.stringify(cartArr));
+        alert("Added Successfully")
+    }
+
+    document.querySelector("#cart").addEventListener("click",function(){
+        window.location.href="cart.html";
+    });
+
+
+
+</script>

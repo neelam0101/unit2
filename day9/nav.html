@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+           
+        }
+        #container{
+            background-color: white;
+            width:90%;
+            height: 660px;
+            padding: 20px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows:80px 180px 180px 180px;
+            grid-gap: 2% 3%;
+            grid-template-areas:
+            "n n n n n n n n n n n n"
+            "lb lb lb lb lb lb lb lb a a a a"
+            "lb lb lb lb lb lb lb lb b b b b"
+            "lb lb lb lb lb lb lb lb c c c c";
+
+        }
+        .nav{
+            grid-area: n;
+            background-color: rgb(247,255,0);
+            font-size: 160%;
+            font-weight: 600;
+            padding:2%;
+
+        }
+        .leftbox{
+            grid-area: lb;
+            background-color: rgb(255,0,0);
+            padding: 2%;
+            color: rgb(70, 67, 67);
+  
+        }
+        .rightbox1{
+            grid-area: a;
+            background-color: rgb(0,255,42);
+            padding: 3%;
+            color: rgb(70, 67, 67);
+
+        }
+        .rightbox2{
+            grid-area: b;
+            background-color:rgb(0,255,42) ;
+            padding: 3%;
+            color: rgb(70, 67, 67);
+
+        }
+        .rightbox3{
+            grid-area: c;
+            background-color:rgb(0,255,42) ;
+            padding: 3%;
+            color: rgb(70, 67, 67);
+
+        }
+        @media only screen and (min-width:300px) and (max-width:600px){
+          
+            #container{
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-rows:80px 180px 180px 180px;
+                grid-template-areas:
+                "n n n n n n n n n n n n"
+                "lb lb lb lb lb lb lb lb lb lb lb lb"
+                "lb lb lb lb lb lb lb lb lb lb lb lb"
+                "a a a a b b b b c c c c";
+
+        }
+        }
+        @media only screen and (min-width:0px) and (max-width:300px){
+            #container{
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-rows:55px 220px 115px 115px 115px;
+                grid-template-areas:
+                "n n n n n n n n n n n n"
+                "lb lb lb lb lb lb lb lb lb lb lb lb"
+                "a a a a a a a a a a a a"
+                "b b b b b b b b b b b b "
+                "c c c c c c c c c c c c";
+
+        }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <div class="nav">Navigation</div>
+    <div class="leftbox">LEFT BOX </div>
+    <div class="rightbox1">RIGHT BOX 1</div>
+    <div class="rightbox2">RIGHT BOX 2</div>
+    <div class="rightbox3">RIGHT BOX 3</div></div>
+    
+</body>r
+</html>

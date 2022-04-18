@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: flex;
+            justify-content: space-around;
+        }
+ form > input {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 200px;
+}
+
+form > select {
+  width: 200px;
+}
+
+form > input[type="submit"] {
+  background-color: rgb(206, 137, 48);
+  color: white;
+  border: 0;
+  padding: 10px 20px;
+  width: 200px;
+}
+
+table,
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 15px;
+}
+
+#filter {
+  margin-bottom: 20px;
+}
+
+#container {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 575px) {
+  #container {
+    flex-direction: column;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <select id="filter" onchange="filter()">
+        <option value="" >filter by category</option>
+        <option value="" >refund</option>
+        <option value="" > item missing</option>
+        <option value="" >order status</option>
+        <option value="" >delivery</option>
+        <option value="" >feedback</option> </select>
+
+        <select id="sortPrice" onchange="sortPrice()">
+            <option value="">Sort by price</option>
+            <option value="low">Low to high</option>
+            <option value="high">High to low</option>
+          </select>
+   
+
+    <div id="container">
+        <div id="form">
+            <form>
+                <p>Category</p>
+                <select id="cat" onchange="filter()">
+                    <option value="" >filter by category</option>
+                    <option value="" >refund</option>
+                    <option value="" > item missing</option>
+                    <option value="" >order status</option>
+                    <option value="" >delivery</option>
+                    <option value="" >feedback</option> </select>
+                <p>Ticket body</p>
+                    <textarea
+                    name=""
+                    id="des"
+                    cols="33"
+                    rows="10"
+                    placeholder="write description"
+                    ></textarea>
+                    <p>Date stamp</p>
+                     <input type="date"placeholder="enter date" id="date" >
+                     <p>Ticket number</p>
+                    <input type="number" placeholder="enter ticket number" id="ticket"> 
+                    <br>
+                 <input type="submit" value="submit" id="submit"> 
+            </form>
+        </div>
+
+        <div id="list">
+            <table>
+            <thead>
+                <tr>
+                    <th>category</th>
+                    <th>ticketbody</th>
+                    <th>date</th>
+                    <th>ticket no.</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",karlo);
+    var karloarr=JSON.parse(localStorage.getItem("karlo")) || [];
+    displaytable(karloarr);
+    
+    function filter(){
+        var selected=document.querySelector("#filter").value;
+        var filterlist=karloarr.filter(function(elem){
+            return elem.cat=selected;
+        })
+        displaytable(filterlist);
+    }
+
+    function sortPrice() {
+    var selected = document.querySelector("#sortPrice").value;
+    if (selected == "low") {
+      karloarr.sort(function (a, b) {
+        return a.price - b.price;
+      });
+    }
+    if (selected == "high") {
+      karloarr.sort(function (a, b) {
+        return b.price - a.price;
+      });
+    }
+    displayTable(karloarr);
+  }
+
+
+    function karlo(event){
+        event.preventDefault();
+        var selected=document.querySelector("#cat").value;
+        var des=document.querySelector("#des").value;
+        var date=document.querySelector("#date").value;
+        var ticket=document.querySelector("#ticket").value;
+
+        karloobj={
+            cat:selected,
+            des:des,
+            date:date,
+            ticket:ticket,
+
+        }
+        karloarr.push(karloobj);
+        localStorage.setItem("karlo" ,JSON.stringify(karloarr));
+        displaytable(karloarr);
+
+    }
+
+    function  displaytable(karloarr){
+        document.querySelector("tbody").textContent="";
+        karloarr.map(function(elem){
+
+          var  tr=document.createElement("tr") ;
+          var td1 =document.createElement("td");
+          td1.textContent=elem.cat;
+          var td2 =document.createElement("td");
+          td2.textContent=elem.des;
+          var td3 =document.createElement("td");
+          td3.textContent=elem.date;
+          var td4 =document.createElement("td");
+          td4.textContent=elem.ticket;
+         
+          tr.append(td1,td2,td3,td4);
+          document.querySelector("tbody").append(tr)
+        })
+    }
+</script>

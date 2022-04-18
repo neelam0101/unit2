@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            padding: 100px;
+        }
+        img{
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <div>
+        <a href="https://www.google.co.in/">Google</a>
+    </div>
+    <hr>
+    <div class="a">
+    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/22000/header.jpg?t=1587578439">
+   
+    </div>
+    <hr>
+    <button onclick="changelink()">change link</button>
+    <button onclick="changeimage()">change image</button>
+    <!-- <button onclick="remove">Remove</button> -->
+    </div>
+</body>
+</html>
+<script>
+    function changelink(){
+    var link= document.querySelector("a");
+    link.innerHTML="Masai school";
+    link.setAttribute("href","//www.masaischool.com/");
+    }
+    function changeimage(){
+      var image=  document.querySelector("img");
+      image.setAttribute("src","https://yt3.ggpht.com/a/AATXAJxhWR8spfPAOhtOg6BwP7XkZJkicX3LPed9yQ=s900-c-k-c0xffffffff-no-rj-mo") ; 
+    }
+    
+</script>

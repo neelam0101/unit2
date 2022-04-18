@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        #container{
+            display: flex;
+            margin-top:100px ;
+            width: 500px;
+            height: 240px;
+            border:1px solid rgb(206, 202, 202);
+
+        }
+        h2{
+            padding: 0px 20px 0 ;
+        }
+        p{
+            margin: 20px 10px 30px 20px;
+            width: 230px;
+            font-size: 17px;
+        }
+        button{
+            background-color: rgb(0,123,255);
+            padding: 10px;
+            margin-left: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            color: white;
+            border: 0;
+        }
+    
+
+    </style>
+</head>
+<body>
+    <div id="container">
+    <div class="left">
+       
+    </div>
+    <div class="right">
+        
+    </div></div>
+</body>
+</html>
+<script>
+    var image=document.createElement("img");
+    image.setAttribute("src","https://via.placeholder.com/230px*240px");
+    document.querySelector(".left").append(image);
+
+    var head= document.createElement("h2");
+    head.textContent="Alice Liddel";
+    var para= document.createElement("p");
+    para.textContent="Alice is a freelance web designer and developer based in London. She is specialized in HTML5, CSS3, Javascript, Bootstrap, etc.";
+    var button=document.createElement("button");
+    button.textContent="View Profile";
+
+    document.querySelector(".right").append(head,para,button);
+    // document.querySelector("#container").append(left,right)
+
+</script>

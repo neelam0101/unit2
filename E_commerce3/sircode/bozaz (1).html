@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="bozaz.css" />
+  </head>
+  <body>
+    <h1>Bozaz Product</h1>
+    <select id="filter" onchange="filterCat()">
+      <option value="">Filter by category</option>
+      <option value="elec">Electronics</option>
+      <option value="fur">Furniture</option>
+      <option value="home">Home Appliance</option>
+      <option value="books">Books</option>
+    </select>
+    <select id="sortPrice" onchange="sortPrice()">
+      <option value="">Sort by price</option>
+      <option value="low">Low to high</option>
+      <option value="high">High to low</option>
+    </select>
+    <div id="container">
+      <div>
+        <form>
+          <select id="cat">
+            <option value="">select category</option>
+            <option value="elec">Electronics</option>
+            <option value="fur">Furniture</option>
+            <option value="home">Home Appliance</option>
+            <option value="books">Books</option>
+          </select>
+          <br />
+          <input type="text" id="title" placeholder="Enter Title" />
+          <br />
+          <textarea
+            name=""
+            id="desc"
+            cols="30"
+            rows="10"
+            placeholder="enter description"
+          ></textarea>
+          <br />
+          <input type="number" id="price" placeholder="Enter Price" />
+          <br />
+          <input type="submit" value="submit" />
+        </form>
+      </div>
+      <div id="display">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  document.querySelector("form").addEventListener("submit", bozaz);
+  var bozazArr = JSON.parse(localStorage.getItem("bozazItems")) || [];
+  displayTable(bozazArr);
+
+  function sortPrice() {
+    var selected = document.querySelector("#sortPrice").value;
+    if (selected == "low") {
+      bozazArr.sort(function (a, b) {
+        return a.price - b.price;
+      });
+    }
+    if (selected == "high") {
+      bozazArr.sort(function (a, b) {
+        return b.price - a.price;
+      });
+    }
+    displayTable(bozazArr);
+  }
+
+  function filterCat() {
+    var selected = document.querySelector("#filter").value;
+    var filteredList = bozazArr.filter(function (elem) {
+      return elem.cat == selected;
+    });
+    displayTable(filteredList);
+  }
+
+  function bozaz(event) {
+    event.preventDefault(); // only for forms
+    var selected = document.querySelector("#cat").value;
+    var title = document.querySelector("#title").value;
+    var des = document.querySelector("#desc").value;
+    var price = document.querySelector("#price").value;
+    console.log(selected, title, des, price);
+
+    var bozazObj = {
+      cat: selected,
+      title: title,
+      description: des,
+      price: price,
+    };
+    bozazArr.push(bozazObj);
+    localStorage.setItem("bozazItems", JSON.stringify(bozazArr));
+    displayTable(bozazArr);
+  }
+
+  function displayTable(bozazArr) {
+    document.querySelector("tbody").textContent = "";
+    bozazArr.map(function (elem, index) {
+      var tr = document.createElement("tr");
+
+      var td1 = document.createElement("td");
+      td1.textContent = elem.cat;
+      var td2 = document.createElement("td");
+      td2.textContent = elem.title;
+
+      var td3 = document.createElement("td");
+      td3.textContent = elem.description;
+
+      var td4 = document.createElement("td");
+      td4.textContent = elem.price;
+
+      //   var td5= document.createElement("td");
+      //   td5.textContent = "delete"
+
+      tr.append(td1, td2, td3, td4);
+      document.querySelector("tbody").append(tr);
+    });
+  }
+</script>
+
+
+// 2 questions -- 3hrs
+// 1 question -- mapping elems, grid, media queries
+// 2 question -- localStorage and sorting and filter

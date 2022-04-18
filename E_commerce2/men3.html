@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .nav {
+        display: flex;
+        background-color: rgb(28, 41, 56);
+        color: white;
+        height: 50px;
+        padding: 25px 0 0 20px;
+        border-radius: 20px;
+        /* top right bottom left */
+      }
+      .left {
+        width: 70%;
+      }
+      .right {
+        display: flex;
+        justify-content: space-around;
+        width: 30%;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      #flex {
+        display: flex;
+        justify-content: space-around;
+      }
+      #flex > p:nth-child(2) {
+        text-decoration: line-through;
+      }
+
+      select {
+        margin-top: 50px;
+      }
+
+      @media only screen and (min-width: 0px) and (max-width: 320px) {
+        #container {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+
+      /* medium screens */
+      @media only screen and (min-width: 321px) and (max-width: 720px) {
+        #container {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="left">Reebok</div>
+      <div class="right">
+        <div>
+          <a target="_blank" href="about.html">About</a>
+        </div>
+        <div onclick="window.location.href='men.html'">Men</div>
+        <div onclick="window.location.href='women.html'">Women</div>
+        <div onclick="window.location.href='login.html'">Login</div>
+        <div onclick="window.location.href='signup.html'">Signup</div>
+      </div>
+    </div>
+
+    <button onclick="window.location.href='cart.html'">Go to Cart</button>
+    <select id="priceSort" onchange="handlePriceSort()">
+      <option value="">Price sort</option>
+      <option value="high">High to low</option>
+      <option value="low">Low to High</option>
+    </select>
+    <select name="" id="brandFilter" onchange="filterCat()">
+      <option value="">Select Brand</option>
+      <option value="Nike">Nike</option>
+      <option value="reebok">Reebok</option>
+    </select>
+    <div id="container">
+      <!-- <div id="flex" >
+            <p>$100</p>
+            <p>$150</p>
+        </div> -->
+    </div>
+  </body>
+</html>
+
+<script>
+  var mensData = JSON.parse(localStorage.getItem("mensData"));
+  //console.log(mensData)
+  var cartArr = JSON.parse(localStorage.getItem("CartItems")) || [];
+  // window.addEventListener("load",function(){
+  //   displayData(mensData);
+  // })
+  displayData(mensData);
+
+  function filterCat() {
+    var selected = document.querySelector("#brandFilter").value;
+    console.log(selected);
+
+    var filteredList = mensData.filter(function (elem) {
+      return elem.brandName == selected;
+    });
+
+    console.log(filteredList);
+    displayData(filteredList);
+  }
+
+  function handlePriceSort() {
+    var selected = document.querySelector("#priceSort").value;
+    //console.log(selected);
+    if (selected == "high") {
+      //descending
+      mensData.sort(function (a, b) {
+        return Number(b.price) - Number(a.price);
+      });
+    }
+    if (selected == "low") {
+      //ascending
+      mensData.sort(function (a, b) {
+        return Number(a.price) - Number(b.price);
+      });
+    }
+
+    console.log(mensData);
+    displayData(mensData);
+  }
+
+  function displayData(mensData) {
+    document.querySelector("#container").innerHTML = "";
+    mensData.map(function (data) {
+      //console.log(data);
+      var div = document.createElement("div");
+      //img,name,price,strikedoffprice
+
+      // image creation
+      var image = document.createElement("img");
+      image.setAttribute("src", data.image_url);
+
+      // name creation
+
+      var name = document.createElement("p");
+      name.textContent = data.name;
+
+      // price creation
+
+      var div2 = document.createElement("div");
+      div2.setAttribute("id", "flex");
+
+      var p1 = document.createElement("p");
+      p1.textContent = data.price;
+
+      var p2 = document.createElement("p");
+      p2.textContent = data.strikedoffprice;
+      // p2.style.textDecoration = "line-through";
+
+      div2.append(p1, p2);
+
+      // add to cart button creation
+
+      var btn = document.createElement("button");
+      btn.textContent = "Add To Cart";
+      btn.addEventListener("click", function () {
+        addToCart(data);
+      });
+
+      //append
+      div.append(image, name, div2, btn);
+      document.querySelector("#container").append(div);
+    });
+  }
+
+  function addToCart(data) {
+    console.log(data, "data");
+    cartArr.push(data);
+    localStorage.setItem("CartItems", JSON.stringify(cartArr));
+    alert("added successfully");
+  }
+</script>

@@ -1,0 +1,173 @@
+.container2{
+    display: flex;
+ 
+   
+    margin-left: 100px;
+    margin-top: 30px;
+
+}
+
+.icn:hover{
+    color: crimson;
+}
+body{
+   background-color: #f3f3f3;
+}
+.mainUl{
+    background-color: white;
+    width: 270px;
+    height: 357px;
+    margin-left: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    
+    border-radius: 2px;
+
+
+}
+.mainUl li a{
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+.mainUl .li{
+   display: flex;
+   align-items: center;
+
+   
+   margin-left: 10px;
+   padding: 20px 0px;
+   list-style: none;
+   border-bottom: 1px solid rgb(240, 236, 236);
+   
+}
+.icn{
+    margin-right: 10px;
+}
+.right-con{
+   
+    margin-left: 20px ;
+    background-color: white;
+    width: 1000px;
+    height: 1000px;
+}
+.payInfo{
+    
+    width: 80%;
+    height: 480px;
+   
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+}
+.payLeft{
+    margin-left: 10px;
+    width: 40%;
+    height: 70%;
+    
+}
+.payRight{
+    
+    width: 55%;
+    height: 70%;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.payimgs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+   
+}
+.payimgs > div{
+   width: 25%;
+   height: 100%;
+  
+   
+
+}
+.payimgs > div img{
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+}
+input{
+    padding: 15px;
+    border: 1px solid teal;
+    border-radius: 3px;
+
+
+}
+.payRight{
+
+    margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.payRight p {
+    margin-bottom: 10px;
+}
+.cardInfo{
+    padding: 10px;
+}
+.paynow{
+    padding: 10px;
+    width: 250px;
+    margin-left: 20%;
+    margin-top: 20px;
+    border: none;
+    background-color: teal;
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.upi{
+    padding-top: 5px;
+    padding-left: 10px;
+    margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.upi button{
+    margin-right: 40px;
+}
+.netBank{
+    
+    padding-top: 5px;
+    padding-left: 10px;
+    margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.bankimg{
+
+   display: grid;
+   grid-template-columns: repeat(3,100px);
+   grid-template-rows: repeat(2, 100px);
+   grid-gap: 20px;
+    
+}
+.bankimg > div{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bankimg img{
+    margin-bottom: 10px;
+}
+.netdown{
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+    
+}
+#sel{
+    margin-top: 10px;
+    width: 140px;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+
+        #container{
+            display: flex;
+            justify-content: space-between;
+            margin-top:100px ;
+            width: 80%;
+            height: 350px;
+           
+
+        }
+        #container>div{
+            border: 1px solid rgb(236, 223, 223);
+            width: 21.5%;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            
+        }
+        #container>div>div{
+            display: flex;
+            justify-content: space-between;
+            margin-top: -15px;
+            margin-left: 50px;
+            width:170px;
+            
+        }
+        div>p{
+            text-align: center;
+            font-size: 14px;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-weight: 600;
+            color: gray;
+            
+        }
+        #container>div>div>p:nth-child(2){
+            text-decoration: line-through;
+            font-size: 13px;
+            color: rgb(179,179,179);
+        }
+        #container>div>div>p:nth-child(1){
+            color: rgb(41, 38, 38);
+            font-size: 16px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+      
+    
+</body>
+</html>
+<script>
+    var data = [
+    {
+        imgUrl:"https://preview.colorlib.com/theme/eiser/img/product/inspired-product/xi1.jpg.pagespeed.ic.mkSk-Af1ka.webp",
+        name:"LATEST WOMEN'S HAND BAG",
+        price:"$25.00",
+        strikedOffPrice:"$95.00"
+    },{
+        imgUrl:"https://preview.colorlib.com/theme/eiser/img/product/inspired-product/xi2.jpg.pagespeed.ic.uBrpABaJqp.webp",
+        name:"LATEST MEN'S JEANS",
+        price:"$35.00",
+        strikedOffPrice:"$100.00"
+    },{
+        imgUrl:"https://preview.colorlib.com/theme/eiser/img/product/inspired-product/xi3.jpg.pagespeed.ic.iO_cFEPy2K.webp",
+        name:"LATEST MEN'S BAND",
+        price:"$35.00",
+        strikedOffPrice:"$100.00"
+    },
+    {
+        imgUrl:"https://preview.colorlib.com/theme/eiser/img/product/inspired-product/xi4.jpg.pagespeed.ic.kmiQW8I5wx.webp",
+        name:"LATEST MEN'S SNEAKER",
+        price:"$35.00",
+        strikedOffPrice:"$100.00"
+    }
+]
+
+data.map(function(mapData){
+    var div= document.createElement("div");
+
+    var image=document.createElement("img");
+    image.setAttribute("src",mapData.imgUrl)
+    
+
+    var name1=document.createElement("p");
+    name1.textContent=mapData.name;
+    
+    
+    var div1=document.createElement("div")
+
+    var h3=document.createElement("p")
+    h3.textContent=mapData.price;
+
+    var p2=document.createElement("p")
+    p2.textContent=mapData.strikedOffPrice;
+
+    div1.append(h3,p2);
+    console.log(div1)
+
+    div.append(image,name1,div1);
+
+   document.querySelector("#container").append(div);
+});
+
+
+
+
+
+
+</script>

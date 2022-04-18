@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    body{
+   text-align: center;
+    }
+    h1{
+    background-color: rgb(241, 66, 12);
+    }
+
+
+  </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{
+            text-align: center;
+            width: 30%;
+           padding-left: 30%;
+        }
+        h1{
+            background-color: rgb(241, 122, 222);
+           
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+        }
+        #container{
+            text-align: left;
+
+            width: 100%;
+            border: 1px solid black;
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+        }
+        span{
+            font-size: 120%;
+            font-weight: 600;
+            padding: 2%;
+            
+        }
+        input{
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;  
+            margin: 6%; 
+           
+          
+        }#email{
+            margin-left: 10%;
+        }
+        #signup{
+            background-color: rgb(146, 132, 132);
+            width: 50%;
+            margin-left: 25%;
+            margin-right: 25%;
+            text-align:center;
+            font-size: 120%;
+          
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Login Page</h1>
+    <hr>
+    <div id="container">
+    <form>
+      <span>Enter Email :</span>
+      <input id="email" type="email" placeholder="enter email">
+      <br>
+      <span>Enter Password:</span>
+      <input id="pass" type="password" placeholder="enter password">
+      <br>
+     
+      
+      <input id="signup" type="submit"value="login in">
+      </form>
+    </div>
+</body>
+</html>
+<script>
+     document.querySelector("form").addEventListener("submit",signin);
+    var rgduser=JSON.parse(localStorage.getItem("userdatabase"));
+
+     function signin(event){
+      event.preventDefault();
+      var email=document.querySelector("#email").value;
+      var password=document.querySelector("#pass").value;
+      for(var i=0;i<rgduser.length;i++)
+      {
+          if(rgduser[i].emailadd==email && rgduser[i].passadd==password )
+          {
+            alert("Successfully login");
+            window.location.href="home.html";
+          }
+          else
+          {
+              if(i==rgduser.length-1)
+              {
+                alert("wrong details");
+              }
+         }
+      }
+       
+
+     };
+
+</script>

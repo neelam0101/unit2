@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="masai">masai school</div>
+    <br>
+    <button onclick="masaisch()" >click</button>
+    <hr>
+    <div id="container">hey Neelam</div>
+    <button onclick="clickme()">click me</button>
+    <hr>
+    <div id="contain">hey poonam</div>
+    <br>
+    <button onclick="sub()">submit</button>
+    <hr>
+    
+    
+</body>
+</html>
+<script>
+    
+    count=0;
+    function clickme(){
+        console.log(" clicked")
+        count++;
+        console.log(count);
+        if(count<=1){alert("someone has clicked me")}
+        else
+        {
+            alert("someone has again clicked me")
+        }
+        document.getElementById("container").innerHTML="<h1>hello</h1> "
+    }
+    function sub(){
+     alert("your form has submitted")
+    
+     document.getElementById("contain").innerHTML="<h2>Welcome poonam</h2> "
+    //  document.getElementById("contain").textContent="welcome Neelam ";
+    }
+    console.log(document.getElementById("container"));
+
+    function masaisch(){
+        document.getElementById("masai").innerHTML="<h1>Welcome</h1>"
+    }
+   
+
+    //for loop
+    var x=document.getElementsByTagName("div");
+    for(i=0;i<x.length;i++){
+        console.log(x[i].textContent)
+    }
+
+    var x=document.getElementsByTagName("button");
+    for(i=0;i<x.length;i++){
+        console.log(x[i].textContent)
+    }
+</script>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            width: 30%;
+           padding-left: 30%;
+        }
+        h1{
+            background-color: cadetblue;
+           
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+        }
+        #container{
+            text-align: left;
+
+            width: 100%;
+            border: 1px solid black;
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+        }
+        span{
+            font-size: 120%;
+            font-weight: 600;
+            padding: 2%;
+            
+        }
+        input{
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;  
+            margin: 6%; 
+           
+          
+        }#email{
+            margin-left: 10%;
+        }
+        #signup{
+            background-color: rgb(212, 20, 20);
+            width: 50%;
+            margin-left: 25%;
+            margin-right: 25%;
+          
+        }
+    </style>
+</head>
+<body>
+    <h1 >Signup Page</h1>
+   
+    <div id="container">
+    <form>
+        <span>Enter Email :</span>
+        <input id="email" type="email" placeholder="enter email">
+        <br>
+        <span>Enter Password:</span>
+        <input id="pass" type="password" placeholder="enter password">
+        <br>
+        <span> Mobile Number :</span>
+        <input id="mobile" type="number" placeholder="enter mobile number">
+        
+        <input id="signup" type="submit" placeholder="Sign Up">
+    </form>
+</div>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",signpage);
+    userStack=JSON.parse(localStorage.getItem("userdatabase")) || [];
+    function signpage(event){
+        event.preventDefault();
+        var email= document.querySelector("#email").value;
+        var pass= document.querySelector("#pass").value;
+        var mobile= document.querySelector("#mobile").value;
+        var  userdata={
+            emailadd:email,
+            passadd:pass,
+            mobileadd:mobile,
+        };
+        userStack.push(userdata);
+       
+        localStorage.setItem("userdatabase",JSON.stringify(userStack));
+        alert("successfully sign-up");
+        window.location.href="login.html";
+       
+    }
+</script>

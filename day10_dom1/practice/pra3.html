@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="size">
+        <option value="Medium">M</option>
+        <option value="Large">L</option>
+        <option value="Small">S</option>
+        <option value="Extra large">XL</option>
+    </select>
+    <button onclick="sizeAlert()">size btao</button>
+</body>
+</html>
+<script>
+   function sizeAlert(){
+     alert(document.getElementById("size").value);
+   }
+</script>

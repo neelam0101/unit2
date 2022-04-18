@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        #container{
+            width:100%;
+            height: 50px;
+            color:white;
+            background-color:rgb(28,41,56) ;
+            display: flex;
+            /* justify-content: space-between; */
+            padding: .7%;
+            border-radius: 5px;
+
+        }
+       .right{
+           display: flex;
+           width:25%;
+           justify-content: space-around;
+            padding: 1%;
+           
+           
+          
+       }
+       .left{
+           width: 70%;
+           padding:1% ;
+           font-size: 110%;
+           font-weight:600;
+          
+       }
+       
+       
+       select{
+           background-color :rgb(28,41,56) ;
+           color: white;
+           border: 0px;
+       }
+       a{
+           color: white;
+           text-decoration-line: none ;
+       }
+
+       
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="left" >Amazon </div>
+        <div class="right">
+            <a id="about" href="about.html" >About</a>
+            <div id="sign" onclick="window.location.href='signup.html'">Sign Up</div>
+            <div id="men">Men</div>
+            <div id="women">Women</div>
+            <div id="login">Login</div>
+        </div>
+    </div>
+    
+</body>
+</html>
+<script>
+    document.querySelector("#men").addEventListener("click",function(){
+        window.location.href="men.html";
+    });
+
+    document.querySelector("#women").addEventListener("click",function(){
+        window.location.href="women.html";
+    });
+
+    document.querySelector("#login").addEventListener("click",loginpage);
+    function loginpage(){
+        window.location.href="login.html";
+    };
+       
+    
+
+
+
+</script>

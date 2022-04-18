@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #e9269e;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #b8c2df;
+  
+}
+
+.dropdown {
+  margin-left:90%;
+
+}
+
+.dropdown-content {
+  display: none;
+  float: right;
+  min-height:1000px;
+  background-color: #f1f1f1;
+  min-width: 400px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;
+}
+
+</style>
+</head>
+<body>
+
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn" style="border-radius: 50%;"><h8 style="font-size: 180%;">🛍️</h8></button>
+  <div id="myDropdown" class="dropdown-content">
+   <div id="addtocart">
+   <button style="width: 100%;;" onclick="myFunction()" class="dropbtn"  ><span style="margin-right:189px;font-size: 25px;"><<</span>Shopping bag</button></div>
+  
+  <img src="https://www.rd.com/wp-content/uploads/2020/06/GettyImages-154734079-1024x683.jpg" style="height: 280px;">
+  <h1>your bag is empty............ proceed now</h1>
+  <span><button style="width: 50%;height: 40px;">Grand total=000</button><button  onclick="yourFunction()" style ="background-color:rgb(238, 24, 167);width: 50%;height: 40px;">PROCEED</button> </span>
+  </div>
+ 
+</div>
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  
+  document.getElementById("myDropdown").classList.toggle("show");
+  
+
+}
+
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    
+   
+  }
+  
+}
+
+</script>
+
+</body>
+</html>

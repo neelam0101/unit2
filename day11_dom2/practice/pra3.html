@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            .box{
+            width:90%;
+            height:60px;
+            border: 1px solid black;
+        }
+   </style>
+</head>
+<body>
+    <br>
+    <hr>
+    <br>
+    <form id="reg">
+        <input type="email" id="email">
+        <input type="password" id="password">
+        <input type="submit" id="submit">  
+    </form>
+    <br>
+    <hr>
+    <br>
+    <div class="box"></div>
+    <br>
+    <hr>
+    <br>
+    <div class="box"></div>
+
+    
+</body>
+</html>
+<script>
+       var c=1;
+       function changecontent(e){
+       e.target.textContent=c;
+        console.log(e.target);
+       c++
+
+       }
+       var boxes=document.querySelectorAll(".box")
+       for( var i=0;i<boxes.length;i++){
+         boxes[i].addEventListener("click",changecontent)
+       }
+
+       var regs= document.getElementById("reg");
+       regs.addEventListener("submit" , registration);
+       function registration(e){
+           e.preventDefault();
+           var email= document.getElementById("email");
+           console.log(email.nextSibling);
+
+       }
+       
+</script>

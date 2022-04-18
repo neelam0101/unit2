@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #box{
+            width:90%;
+            height:60px;
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="box"></div>
+    <hr>
+    <input type="number" id= "user">
+    <hr>
+    <button id="change"> change color</button>
+</body>
+</html>
+<script>
+     var b=document.querySelector("#box");
+     var u=document.querySelector("#user");
+     var c=document.querySelector("#change");
+
+     b.addEventListener("dblclick",red);
+     u.addEventListener("mouseenter",green);
+     c.addEventListener("keyup",blue);
+     count=1;
+     function red(){
+        document.querySelector("#box").style.backgroundColor="red";
+        document.querySelector("#box").textContent=count;
+        count++;
+     }
+     
+     function green(){
+        
+
+        document.querySelector("#user").style.backgroundColor="green";
+        document.querySelector("#user").textContent=count;
+        count++;
+     }
+     
+
+     function blue(){
+        
+        document.querySelector("#change").style.backgroundColor="blue";
+        document.querySelector("#change").textContent=count;
+        count++;
+     }
+
+
+
+</script>

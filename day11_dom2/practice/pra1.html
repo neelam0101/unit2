@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/e3ddd9c631.js" crossorigin="anonymous"></script>
+    <style>
+        #box{
+            width:90%;
+            height:60px;
+            border: 1px solid black;
+        }
+        #set
+        {
+          width: 550px;
+        }
+        i{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <br>
+    <button id="addme">change color</button>
+    <!-- <button id="removeme">remove all</button> -->
+     <div id="image1"></div>
+     <div id="image2"></div>
+    
+     <!-- <i class="fas  fa-ad"></i> -->
+     <div id="icon"></div>
+
+     <div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div class="dropdown-content">
+          <a href="pra2.html">Link 1</a>
+          <a href="pra3.html">Link 2</a>
+          <a href="pra4.html">Link 3</a>
+        </div>
+      </div>
+   
+    
+</body>
+</html>
+<script>
+    var x= document.getElementById("addme");
+    x.addEventListener("click", colorfun);
+    // var y= document.getElementById("removeme");
+    // y.removeEventListener("click", neelam);
+    count=1;
+     function colorfun(){
+     document.getElementById("box").style.backgroundColor="red";
+     document.getElementById("box").textContent=count;
+     document.getElementById("box").style.color="teal";
+     document.getElementById("box").style.fontSize="40px";
+     count++;
+     }
+    //  function neelam(){
+    //      x.removeEventListener("click",colorfun)
+    //  }
+    
+     var image1= document.createElement("img");
+     image1.setAttribute("src" , "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6EYkzYEcqSlAwwN01LCeBBpOItSBOIplymKbOWhk4BvnFXmxg")
+     document.getElementById("image1").append(image1);
+     var image2= document.createElement("img");
+     image2.setAttribute("src" , "https://www.nykaa.com/assets/desktop/images/install_app/pop_img.png")
+     document.getElementById("image2").append(image2)
+     image2.setAttribute("id","set")
+
+     var i=document.createElement("i")
+     i.setAttribute("class","fas fa-ad")
+     document.querySelector("#icon").append(i)
+
+     <img src="https://www.freepnglogos.com/uploads/play-store-logo-png/the-evolution-google-logo-well-its-play-store-logo-19.png"/ >
+
+    
+</script>
